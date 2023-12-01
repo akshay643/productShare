@@ -5,6 +5,7 @@ import { BaseURL } from "../../utils/axiosRoute";
 async function getData() {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/products`);
   // The return value is *not* serialized
+
   // You can return Date, Map, Set, etc.
   if (res.status !== 200) {
     // This will activate the closest `error.js` Error Boundary
@@ -16,5 +17,6 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData();
+  console.log(data);
   return <Gallery data={data} />;
 }
