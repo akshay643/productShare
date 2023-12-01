@@ -12,7 +12,7 @@ const validationSchema = Yup.object({
   product_description: Yup.string().required("required"),
   product_link: Yup.string().required("required"),
 });
-const page = () => {
+const Page = () => {
   const router = useRouter();
 
   const [files, setFiles] = useState([]);
@@ -126,4 +126,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
