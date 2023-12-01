@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 import Gallery from "../../components/Gallery";
 import { BaseURL } from "../../utils/axiosRoute";
 async function getData() {
-  const res = await fetch(`${BaseURL}/api/products`);
+  const res = await fetch(`/api/products`);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
   if (res.status !== 200) {
