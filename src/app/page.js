@@ -36,7 +36,7 @@ export default async function Home() {
                     <div className="flex-grow">
                       <h2 className="title-font font-medium text-lg text-gray-900">
                         {/* {product.product_name} */}
-                        Alshay
+                        Alshay KKi
                       </h2>
                       <p className="mb-4">
                         {/* {product.product_description} */}
