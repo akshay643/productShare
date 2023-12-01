@@ -6,8 +6,7 @@ async function getData(id) {
   const res = await fetch(`${BaseURL}/api/products`);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
-  console.log("dadadadadad", res);
-  if (!res.ok) {
+  if (res.status !== 200) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
@@ -17,6 +16,5 @@ async function getData(id) {
 
 export default async function Home() {
   const data = await getData();
-
   return <Gallery data={data} />;
 }
