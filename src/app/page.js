@@ -1,7 +1,4 @@
-import Image from "next/image";
 import Button from "../../components/Button";
-import Gallery from "../../components/Gallery";
-import { BaseURL } from "../../utils/axiosRoute";
 import axios from "axios";
 async function getData(id) {
   const res = await axios.get(
