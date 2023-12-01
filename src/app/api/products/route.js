@@ -57,6 +57,7 @@ export const POST = async (req, res) => {
       product_name,
       product_url,
     });
+    console.log(NewProducts);
 
     // Save the product data to the database
     await NewProducts.save();
