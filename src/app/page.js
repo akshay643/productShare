@@ -1,18 +1,22 @@
 import Button from "../../components/Button";
 import axios from "axios";
 async function getData() {
-  const res = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/products`
-  );
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
+  try {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/products`
+    );
 
-  if (res.status !== 200) {
-    // This will activate the closest `error.js` Error Boundary
+    // Axios doesn't use the "ok" property, so you can check for the status directly
+    if (res.status !== 200) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json(); // Axios already parses JSON for you
+  } catch (error) {
+    console.error("Error fetching data:", error);
     throw new Error("Failed to fetch data");
   }
-
-  return res.json();
 }
 
 export default async function Home() {
