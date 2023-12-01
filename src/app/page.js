@@ -3,7 +3,10 @@ import Button from "../../components/Button";
 import Gallery from "../../components/Gallery";
 import { BaseURL } from "../../utils/axiosRoute";
 async function getData() {
-  const res = await fetch(`https://product-share.vercel.app/api/products`);
+  const res = await fetch(
+    `https://product-share.vercel.app/api/products`,
+    { next: { revalidate: 10 } } // Seconds
+  );
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
   if (res.status !== 200) {
