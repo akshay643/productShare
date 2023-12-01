@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Button";
 const Gallery = ({ data }) => {
+  Gallery.defaultProps = null;
   return (
     <section className="text-gray-600  ">
       <div className="container px-5 py-20 mx-auto">
