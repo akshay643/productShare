@@ -32,17 +32,13 @@ const upload = multer({
     }
   },
 });
-export const GET = async (request) => {
-  console.log("yes");
+export const GET = async (req, res) => {
   try {
     await connectToDB();
-    const data = await AllProducts.find({});
-
-    return new Response(JSON.stringify(data), { status: 200 });
+    const allProductData = await AllProducts.find({});
+    return new Response(JSON.stringify(allProductData), { status: 200 });
   } catch (error) {
-    return new Response("Failed", {
-      status: 500,
-    });
+    return new Response("Failed", { status: 400 });
   }
 };
 
