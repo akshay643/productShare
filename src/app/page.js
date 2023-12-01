@@ -2,9 +2,7 @@ import Button from "../../components/Button";
 import axios from "axios";
 async function getData() {
   try {
-    const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/products`
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
 
     // Axios doesn't use the "ok" property, so you can check for the status directly
     if (res.status !== 200) {
