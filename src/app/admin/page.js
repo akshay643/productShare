@@ -37,14 +37,11 @@ const Page = () => {
   });
   const handleFormSubmit = async (values) => {
     console.log("values", values);
-    const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/products`,
-      {
-        ...values,
-        product_link: files,
-        product_url: "none",
-      }
-    );
+    const res = await axios.post(`${process.env.NEXTAUTH_URL}/api/products`, {
+      ...values,
+      product_link: files,
+      product_url: "none",
+    });
     if (res?.status !== 200) {
       alert("Something Went Wrong");
     } else {
