@@ -2,7 +2,7 @@ import Button from "../../components/Button";
 import axios from "axios";
 async function getData() {
   try {
-    const res = await axios.get(`${process.env.NEXTAUTH_URL}/api/products`);
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/products`);
 
     // Axios doesn't use the "ok" property, so you can check for the status directly
     if (res.status !== 200) {
@@ -10,7 +10,7 @@ async function getData() {
       throw new Error("Failed to fetch data");
     }
 
-    return res.data; // Axios already parses JSON for you
+    return res.json(); // Axios already parses JSON for you
   } catch (error) {
     console.error("Error fetching data:", error);
     throw new Error("Failed to fetch data");
