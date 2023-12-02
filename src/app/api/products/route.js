@@ -1,6 +1,7 @@
 const AllProducts = require("../../../../models/allProductsModel"); // Adjust the path accordingly
 import { connectToDB } from "../../../../utils/db";
 import multer from "multer";
+import { NextResponse } from "next/server";
 const fs = require("fs");
 
 const path = require("path");
@@ -36,7 +37,10 @@ export const GET = async (req, res) => {
   try {
     await connectToDB();
     const allProductData = await AllProducts.find({});
-    return new Response(JSON.stringify(allProductData), { status: 200 });
+    return NextResponse.json({
+      data: allProductData,
+      status: 200,
+    });
   } catch (error) {
     console.error("Failed to fetch product data:", error);
     return new Response(

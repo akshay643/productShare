@@ -19,9 +19,8 @@ import axios from "axios";
 
 //hello
 const Home = async () => {
-  const dataRsult = await fetch(`${process.env.NEXTAUTH_URL}/api/products`);
-  const data = await dataRsult.json();
-  console.log("data", data);
+  const dataRsult = await axios.get(`${process.env.NEXTAUTH_URL}/api/products`);
+  const data = [dataRsult.data];
   return (
     <section className="text-gray-600  ">
       <div className="container px-5 py-20 mx-auto">
