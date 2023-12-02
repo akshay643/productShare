@@ -38,7 +38,11 @@ export const GET = async (req, res) => {
     const allProductData = await AllProducts.find({});
     return new Response(JSON.stringify(allProductData), { status: 200 });
   } catch (error) {
-    return new Response("Failed", { status: 400 });
+    console.error("Failed to fetch product data:", error);
+    return new Response(
+      JSON.stringify({ error: "Failed to fetch product data" }),
+      { status: 500 }
+    );
   }
 };
 
