@@ -18,7 +18,7 @@ async function getData() {
 }
 
 //hello
-export default async function Home() {
+const Home = async () => {
   const data = await getData();
   return (
     <section className="text-gray-600  ">
@@ -49,4 +49,6 @@ export default async function Home() {
       </div>
     </section>
   );
-}
+};
+
+export default Home;
