@@ -31,7 +31,6 @@ const Page = () => {
     initialValues: productData,
     validationSchema,
     onSubmit: (values) => {
-      // Handle form submission here
       handleFormSubmit(values);
     },
   });
