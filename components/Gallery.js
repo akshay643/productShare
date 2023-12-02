@@ -1,7 +1,24 @@
 import React from "react";
 import Button from "./Button";
-const Gallery = ({ data }) => {
-  Gallery.defaultProps = null;
+async function getData() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
+
+    // Axios doesn't use the "ok" property, so you can check for the status directly
+    if (res.status !== 200) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json(); // Axios already parses JSON for you
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw new Error("Failed to fetch data");
+  }
+}
+const Gallery = async () => {
+  const data = await getData();
+
   return (
     <section className="text-gray-600  ">
       <div className="container px-5 py-20 mx-auto">
