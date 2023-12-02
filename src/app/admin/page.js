@@ -35,11 +35,14 @@ const Page = () => {
   });
   const handleFormSubmit = async (values) => {
     console.log("values", process.env.NEXTAUTH_URL);
-    const res = await axios.post(`${process.env.NEXTAUTH_URL}/api/products`, {
-      ...values,
-      product_link: files,
-      product_url: "none",
-    });
+    const res = await axios.post(
+      `https://product-share.vercel.app/api/products`,
+      {
+        ...values,
+        product_link: files,
+        product_url: "none",
+      }
+    );
     if (res?.status !== 200) {
       alert("Something Went Wrong");
     } else {

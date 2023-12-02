@@ -23,7 +23,7 @@ async function getData() {
 const Home = async () => {
   var data;
   var responseClone; // 1
-  await fetch(`${process.env.NEXTAUTH_URL}/api/products`)
+  await fetch(`https://product-share.vercel.app/api/products`)
     .then(function (response) {
       responseClone = response.clone(); // 2
       console.log(responseClone);
