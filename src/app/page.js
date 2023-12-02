@@ -18,9 +18,18 @@ import Button from "../../components/Button";
 
 //hello
 const Home = async () => {
-  const dataRsult = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
-    cache: "no-store",
-  });
+  const dataRsult = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/products`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    },
+    {
+      cache: "no-store",
+    }
+  );
   const data = await dataRsult.json();
   console.log("data", data);
   return (
