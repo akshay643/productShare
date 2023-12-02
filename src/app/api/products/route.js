@@ -37,14 +37,16 @@ export const GET = async (req, res) => {
   try {
     await connectToDB();
     const allProductData = await AllProducts.find({});
-    return NextResponse.json({
+    return NextResponse.send({
       data: allProductData,
       status: 200,
     });
   } catch (error) {
     console.error("Failed to fetch product data:", error);
     return new Response(
-      JSON.stringify({ error: "Failed to fetch product data" }),
+      JSON.stringify({
+        error: `Failed to fetch product data: ${error.message}`,
+      }),
       { status: 500 }
     );
   }
