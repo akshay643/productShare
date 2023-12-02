@@ -19,6 +19,7 @@ async function getData() {
   }
 }
 
+//hello
 export default async function Home() {
   const data = await getData();
   return (
