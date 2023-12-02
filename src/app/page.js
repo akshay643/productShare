@@ -19,8 +19,8 @@ import axios from "axios";
 
 //hello
 const Home = async () => {
-  const dataRsult = await axios.get(`${process.env.NEXTAUTH_URL}/api/products`);
-  const data = dataRsult.data;
+  const dataRsult = await fetch(`${process.env.NEXTAUTH_URL}/api/products`);
+  const data = await dataRsult.json();
   console.log("data", data);
   return (
     <section className="text-gray-600  ">
