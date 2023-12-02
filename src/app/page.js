@@ -19,7 +19,7 @@ import axios from "axios";
 
 //hello
 const Home = async () => {
-  const dataRsult = await axios.get(`${process.env.NEXTAUTH_URL}/api/products`);
+  const dataRsult = await axios.get(`${process.env.NEXTAUTH_URL}api/products`);
   const data = dataRsult.data.data;
   console.log(data);
   return (
