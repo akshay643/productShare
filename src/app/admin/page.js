@@ -4,7 +4,6 @@ import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { postRequest } from "../../../utils/API_request";
 import FileBase64 from "react-file-base64";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -35,7 +34,7 @@ const Page = () => {
     },
   });
   const handleFormSubmit = async (values) => {
-    console.log("values", values);
+    console.log("values", process.env.NEXTAUTH_URL);
     const res = await axios.post(`${process.env.NEXTAUTH_URL}/api/products`, {
       ...values,
       product_link: files,
