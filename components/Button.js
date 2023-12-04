@@ -18,7 +18,7 @@ const Button = ({
     "md:mb-0",
     "px-5",
     "py-2",
-    "shadow-sm",
+    "shadow-lg",
     "tracking-wider",
     isSecondary ? "text-black" : "text-white",
     "rounded-full",

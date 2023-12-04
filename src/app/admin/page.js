@@ -59,7 +59,7 @@ const Page = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (password !== "1234") {
+    if (password !== process.env.PASSWORD) {
       notify("Not Authorise");
       setIsAuthorise(false);
     } else {
@@ -87,15 +87,16 @@ const Page = () => {
 
       {!isAuthorise ? (
         <>
-          <div className="wrapper flex py-20 flex-col justify-center">
-            <div className="m-auto p-20 border rounded-lg">
+          <div className="flex flex-center justify-start lg:h-screen xs:h-max  ">
+            <div className="m-auto flex flex-col p-20 border rounded-lg shadow-2xl">
               <Input
                 label="Enter your password"
                 name="password"
-                type="text"
+                className="rounded-lg shadow-lg"
+                type="password"
                 onChange={handleChange}
               />
-              <button onClick={handleClick}>Login </button>
+              <Button isPrimary buttonText="Login" handleClick={handleClick} />
             </div>
           </div>
         </>
