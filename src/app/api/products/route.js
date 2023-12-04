@@ -37,7 +37,7 @@ export const GET = async (req, res) => {
   try {
     await connectToDB();
     const allProductData = await AllProducts.find({});
-    return NextResponse.send({
+    return NextResponse.json({
       data: allProductData,
       status: 200,
     });
