@@ -28,7 +28,7 @@ const Home = async () => {
   };
   const value = await fetch(`${process.env.BASE_URL}api/products`, options)
     .then((response) => {
-      console.log("1", response);
+      // console.log("1", response);
       // Check if the request was successful (status code 200-299)
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -37,21 +37,21 @@ const Home = async () => {
       return response.json();
     })
     .then((datas) => {
-      console.log("2", datas);
+      // console.log("2", datas);
 
       // Handle the data from the successful response
 
       return datas;
     })
     .catch((error) => {
-      console.log("3", error);
+      // console.log("3", error);
 
       // Handle errors during the request
       console.error("Fetch error:", error.message);
     });
   // options.body = JSON.stringify(body);
 
-  console.log("ssssssss", value);
+  // console.log("ssssssss", value);
   // const dataRsult = await fetch(`${process.env.BASE_URL}api/products`);
   // const data_data = await dataRsult.json();
   // //d
