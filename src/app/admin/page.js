@@ -36,7 +36,7 @@ const Page = () => {
   //dafa
   const handleFormSubmit = async (values) => {
     console.log("values", process.env.BASE_URL);
-    const res = await axios.post(`http://localhost:3000/api/products`, {
+    const res = await axios.post(`${process.env.BASE_URL}/api/products`, {
       ...values,
       product_link: files,
       product_url: "none",
