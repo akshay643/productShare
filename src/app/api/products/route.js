@@ -35,8 +35,7 @@ const upload = multer({
 });
 export const GET = async (req, res) => {
   try {
-    const res = await connectToDB();
-    console.log("resssssssssssssss", res);
+    await connectToDB();
     const allProductData = await AllProducts.find({});
     return NextResponse.json({
       data: allProductData,
