@@ -10,7 +10,6 @@ async function getData() {
   return response.data;
 }
 
-//hello
 const Home = async () => {
   const dataResult = await getData();
   const data = dataResult.data;
