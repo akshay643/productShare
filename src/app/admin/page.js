@@ -35,7 +35,7 @@ const Page = () => {
   });
   const handleFormSubmit = async (values) => {
     console.log("values", process.env.NEXTAUTH_URL);
-    const res = await axios.post(`${process.env.NEXTAUTH_URL}api/products`, {
+    const res = await axios.post(`${process.env.BASE_URL}/api/products`, {
       ...values,
       product_link: files,
       product_url: "none",
