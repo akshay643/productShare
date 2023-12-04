@@ -19,13 +19,16 @@ async function getData() {
 const Home = async () => {
   const data = await getData();
   return (
-    <section className="text-gray-600 ">
+    <section className="text-gray-600">
       <div className="container px-5 py-20 mx-auto">
-        <div className="flex flex-wrap -m-4">
+        <div className="flex flex-wrap -m-2 justify-center">
           {data &&
             data?.map((product, index) => {
               return (
-                <div className="p-4 sm:w-1/2 xs:w-1/2 lg:w-1/5" key={index}>
+                <div
+                  className="p-4 sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/5"
+                  key={index}
+                >
                   <div className="shadow-2xl border h-full p-4 rounded-md flex flex-col items-center sm:justify-start justify-center text-center">
                     <img
                       alt="team"
