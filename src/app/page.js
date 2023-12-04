@@ -26,7 +26,10 @@ const Home = async () => {
       // Add any other headers as needed
     },
   };
-  const value = await fetch(`${process.env.BASE_URL}api/products`, options)
+  const value = await fetch(
+    `https://product-share.vercel.app/api/products`,
+    options
+  )
     .then((response) => {
       console.log("1", response);
       // Check if the request was successful (status code 200-299)
