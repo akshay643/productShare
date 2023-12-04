@@ -11,14 +11,11 @@ export const connectToDB = async () => {
   }
 
   try {
-    await mongoose.connect(
-      "mongodb+srv://vercel-admin-user:123456@cluster0.1vckvk2.mongodb.net/buyitout?retryWrites=true&w=majority",
-      {
-        dbName: "new_web_app",
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    );
+    await mongoose.connect(process.env.MONGODB_URI, {
+      dbName: "new_web_app",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
     isConnected = true;
 
