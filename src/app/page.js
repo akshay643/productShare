@@ -1,7 +1,7 @@
 import Button from "../../components/Button";
 import axios from "axios";
 async function getData() {
-  const response = await axios.get(`${process.env.BASE_URL}/api/products`);
+  const response = await axios.get(`${process.env.BASE_URL}api/products`);
 
   if (response.status !== 200) {
     throw new Error(`HTTP error! Status: ${response.status}`);
