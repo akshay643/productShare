@@ -40,6 +40,7 @@ const Home = async () => {
                         {product.product_name}
                       </h2>
                       <p className="mb-4">{product.product_description}</p>
+
                       <a
                         href={product.product_url}
                         target="_blank"
