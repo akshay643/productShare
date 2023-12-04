@@ -55,6 +55,7 @@ const Home = async () => {
   // const dataRsult = await fetch(`${process.env.BASE_URL}api/products`);
   // const data_data = await dataRsult.json();
   // //d
+  const data = value?.data;
   // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", data);
   return (
     <section className="text-gray-600  ">
