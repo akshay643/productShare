@@ -19,11 +19,38 @@ import axios from "axios";
 
 //hello
 const Home = async () => {
-  const dataRsult = await fetch(`${process.env.BASE_URL}api/products`);
-  const data_data = await dataRsult.json();
-  //d
-  const data = data_data.data;
-  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", data);
+  const options = {
+    method: "GET", // HTTP method
+    headers: {
+      "Content-Type": "application/json", // Request headers
+      // Add any other headers as needed
+    },
+  };
+  const value = await fetch(`${process.env.BASE_URL}api/products`, options)
+    .then((response) => {
+      // Check if the request was successful (status code 200-299)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      // Parse the response data (assuming it's JSON)
+      return response.json();
+    })
+    .then((datas) => {
+      // Handle the data from the successful response
+      return datas;
+    })
+    .catch((error) => {
+      // Handle errors during the request
+      console.error("Fetch error:", error.message);
+    });
+  // options.body = JSON.stringify(body);
+
+  console.log("ssssssss", value);
+  // const dataRsult = await fetch(`${process.env.BASE_URL}api/products`);
+  // const data_data = await dataRsult.json();
+  // //d
+  const data = value.data;
+  // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", data);
   return (
     <section className="text-gray-600  ">
       <div className="container px-5 py-20 mx-auto">
@@ -37,7 +64,7 @@ const Home = async () => {
                       alt="team"
                       className="flex-shrink-0 rounded-lg w-32 h-32 object-cover object-center sm:mb-0 mb-4"
                       src={product.product_link}
-                    /> */}
+                    />  */}
                     <div className="flex-grow">
                       <h2 className="title-font font-medium text-lg text-gray-900">
                         {product.product_name}
