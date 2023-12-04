@@ -6,16 +6,21 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import FileBase64 from "react-file-base64";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { postProduct } from "../serverAction/productAction";
+import { Slide, Zoom, Flip, Bounce } from "react-toastify";
+
 const validationSchema = Yup.object({
   product_name: Yup.string().required("required"),
   product_description: Yup.string().required("required"),
   product_link: Yup.string().required("required"),
 });
 const Page = () => {
-  const router = useRouter();
+  const notify = (notification) => toast(notification);
 
+  const router = useRouter();
+  const [isAuthorise, setIsAuthorise] = useState(false);
   const [files, setFiles] = useState([]);
   const getFiles = (files) => {
     setFiles(files[0].base64);
@@ -47,81 +52,129 @@ const Page = () => {
     alert("Saved Successfully");
     router.push("/");
   };
+  const [password, setPassword] = useState("");
+  const handleChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (password !== "1234") {
+      notify("Not Authorise");
+      setIsAuthorise(false);
+    } else {
+      notify("Authorise");
+
+      setIsAuthorise(true);
+    }
+  };
 
   return (
-    <div className="min-h-screen flex justify-center  bg-center bg-white  px-4 sm:px-6 bg bg-no-repeat bg-cover relative items-start p-4">
-      <div className="form w-full h-full p-12 border rounded-2xl shadow-xl">
-        <div className="md:flex flex-row md:space-x-4 w-full text-xs">
-          <div className="mb-3 space-y-2 w-full text-xs">
-            <Input
-              placeholder="Product Name"
-              label="Product Name"
-              onChange={formik.handleChange}
-              required="required"
-              type="text"
-              name="product_name"
-            />
-            <p className="text-red text-xs hidden">
-              Please fill out this field.
-            </p>
-          </div>
-          <div className="mb-3 space-y-2 w-full text-xs">
-            <Input
-              label="Product Link"
-              onChange={formik.handleChange}
-              required="required"
-              type="text"
-              name="product_link"
-            />
-            <p className="text-red text-xs hidden">
-              Please fill out this field.
-            </p>
-          </div>
-        </div>
-        <div className="md:flex flex-row md:space-x-4 w-full text-xs">
-          <div className="mb-3 space-y-2 w-full text-xs">
-            <Input
-              placeholder="Product Description"
-              label="Product Description"
-              required="required"
-              onChange={formik.handleChange}
-              type="text"
-              name="product_description"
-            />
-            <p className="text-red text-xs hidden">
-              Please fill out this field.
-            </p>
-          </div>
-          <div className="mb-3 space-y-2 w-full text-xs">
-            <label>File Upload</label>
-            <br />
-            <FileBase64
-              className="bg-dark border"
-              multiple={true}
-              onDone={(e) => getFiles(e)}
-            />{" "}
-            <p className="text-red text-xs hidden">
-              Please fill out this field.
-            </p>
-          </div>
-        </div>
-        <p className="text-xs text-red-500 text-right my-3">
-          Required fields are marked with an asterisk{" "}
-          <abbr title="Required field">*</abbr>
-        </p>
-        <div className="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
-          <Button buttonText="cancel" isSecondary isSmall />
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        transition={Flip}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
 
-          <Button
-            type="submit"
-            handleClick={formik.handleSubmit}
-            buttonText="Save"
-            isPrimary
-            isSmall
-          />
+      {!isAuthorise ? (
+        <>
+          <div className="wrapper flex py-20 flex-col justify-center">
+            <div className="m-auto p-20 border rounded-lg">
+              <Input
+                label="Enter your password"
+                name="password"
+                type="text"
+                onChange={handleChange}
+              />
+              <button onClick={handleClick}>Login </button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="min-h-screen flex justify-center  bg-center bg-white  px-4 sm:px-6 bg bg-no-repeat bg-cover relative items-start p-4">
+          <div className="form w-full h-full p-12 border rounded-2xl shadow-xl">
+            <div className="md:flex flex-row md:space-x-4 w-full text-xs">
+              <div className="mb-3 space-y-2 w-full text-xs">
+                <Input
+                  placeholder="Product Name"
+                  label="Product Name"
+                  onChange={formik.handleChange}
+                  required="required"
+                  type="text"
+                  name="product_name"
+                />
+                <p className="text-red text-xs hidden">
+                  Please fill out this field.
+                </p>
+              </div>
+              <div className="mb-3 space-y-2 w-full text-xs">
+                <Input
+                  label="Product Link"
+                  onChange={formik.handleChange}
+                  required="required"
+                  type="text"
+                  name="product_link"
+                />
+                <p className="text-red text-xs hidden">
+                  Please fill out this field.
+                </p>
+              </div>
+            </div>
+            <div className="md:flex flex-row md:space-x-4 w-full text-xs">
+              <div className="mb-3 space-y-2 w-full text-xs">
+                <Input
+                  placeholder="Product Description"
+                  label="Product Description"
+                  required="required"
+                  onChange={formik.handleChange}
+                  type="text"
+                  name="product_description"
+                />
+                <p className="text-red text-xs hidden">
+                  Please fill out this field.
+                </p>
+              </div>
+              <div className="mb-3 space-y-2 w-full text-xs">
+                <label>File Upload</label>
+                <br />
+                <FileBase64
+                  className="bg-dark border"
+                  multiple={true}
+                  onDone={(e) => getFiles(e)}
+                />{" "}
+                <p className="text-red text-xs hidden">
+                  Please fill out this field.
+                </p>
+              </div>
+            </div>
+            <p className="text-xs text-red-500 text-right my-3">
+              Required fields are marked with an asterisk{" "}
+              <abbr title="Required field">*</abbr>
+            </p>
+            <div className="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
+              <Button buttonText="cancel" isSecondary isSmall />
+
+              <Button
+                type="submit"
+                handleClick={formik.handleSubmit}
+                buttonText="Save"
+                isPrimary
+                isSmall
+              />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

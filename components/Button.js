@@ -4,7 +4,9 @@ import Link from "next/link";
 
 const Button = ({
   buttonText,
+  isLink,
   isPrimary,
+  href,
   isSecondary,
   isLarge,
   type,
@@ -31,14 +33,23 @@ const Button = ({
   );
 
   return (
-    <button
-      href="/dashboard"
-      className={buttonClasses}
-      type={type}
-      onClick={handleClick}
-    >
-      {buttonText}
-    </button>
+    <>
+      {isLink ? (
+        <Link href={`${href}`} className={buttonClasses}>
+          {" "}
+          {buttonText}{" "}
+        </Link>
+      ) : (
+        <button
+          href="/dashboard"
+          className={buttonClasses}
+          type={type}
+          onClick={handleClick}
+        >
+          {buttonText}
+        </button>
+      )}
+    </>
   );
 };
 

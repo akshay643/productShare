@@ -4,7 +4,10 @@ const Navigation = () => {
   return (
     <header className="bg-gray-800 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a className="flex title-font font-medium items-center text-gray-400 mb-4 md:mb-0">
+        <a
+          href="/"
+          className="flex title-font font-medium items-center text-gray-400 mb-4 md:mb-0"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -20,7 +23,7 @@ const Navigation = () => {
           <span className="ml-3 text-xl">BuyItOut</span>
         </a>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center"></nav>
-        <Button isLarge isPrimary buttonText="Profile" />
+        <Button isLink isLarge isPrimary buttonText="Profile" href="/admin" />
       </div>
     </header>
   );

@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.wrapper {
+  background-color: #fff;
+  height: 100vh;
+}
