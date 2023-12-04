@@ -40,7 +40,13 @@ const Home = async () => {
                         {product.product_name}
                       </h2>
                       <p className="mb-4">{product.product_description}</p>
-                      <Button isSmall isPrimary buttonText="Buy" />
+                      <a
+                        href={product.product_url}
+                        target="_blank"
+                        className="px-5 py-2 text-white shadow-lg tracking-wider rounded-full hover:shadow-lg bg-green-600 focus:outline-none hover:bg-green-500 text-sm"
+                      >
+                        Buy
+                      </a>
                     </div>
                   </div>
                 </div>

@@ -11,11 +11,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { postProduct } from "../serverAction/productAction";
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 
-const validationSchema = Yup.object({
-  product_name: Yup.string().required("required"),
-  product_description: Yup.string().required("required"),
-  product_link: Yup.string().required("required"),
-});
+// const validationSchema = Yup.object({
+//   product_name: Yup.string().required("required"),
+//   product_description: Yup.string().required("required"),
+//   product_link: Yup.string().required("required"),
+// });
 const Page = () => {
   const notify = (notification) => toast(notification);
 
@@ -34,17 +34,22 @@ const Page = () => {
 
   const formik = useFormik({
     initialValues: productData,
-    validationSchema,
+    // validationSchema,
     onSubmit: (values) => {
       handleFormSubmit(values);
     },
   });
   //dafa
+  //product_link:  Image
+  //product_url:  product link
   const handleFormSubmit = async (values) => {
+    console.log({
+      ...values,
+      product_link: files,
+    });
     const result = await postProduct({
       ...values,
       product_link: files,
-      product_url: "none",
     });
     if (!result.status === 200) {
       alert("Something went wrong");
@@ -123,7 +128,7 @@ const Page = () => {
                   onChange={formik.handleChange}
                   required="required"
                   type="text"
-                  name="product_link"
+                  name="product_url"
                 />
                 <p className="text-red text-xs hidden">
                   Please fill out this field.
