@@ -12,7 +12,7 @@ export const connectToDB = async () => {
 
   try {
     await mongoose.connect(
-      "mongodb+srv://root:password%40123@cluster0.1vckvk2.mongodb.net/buyitout?retryWrites=true&w=majority",
+      "mongodb+srv://vercel-admin-user:123456@cluster0.1vckvk2.mongodb.net/buyitout?retryWrites=true&w=majority",
       {
         dbName: "new_web_app",
         useNewUrlParser: true,
