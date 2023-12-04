@@ -1,6 +1,6 @@
+import { revalidateTag } from "next/cache";
 import Button from "../../components/Button";
 import AllProducts from "../../models/allProductsModel";
-import axios from "axios";
 import { connectToDB } from "../../utils/db";
 async function getData() {
   try {
@@ -9,16 +9,17 @@ async function getData() {
     if (!data) {
       throw new Error("couldn't find the data");
     }
+    revalidateTag("getData");
     return data;
   } catch (error) {
-    console.log("errpr");
+    console.log("error");
   }
 }
 
 const Home = async () => {
   const data = await getData();
   return (
-    <section className="text-gray-600  ">
+    <section className="text-gray-600 ">
       <div className="container px-5 py-20 mx-auto">
         <div className="flex flex-wrap -m-4">
           {data &&
