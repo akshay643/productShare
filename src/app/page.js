@@ -1,18 +1,22 @@
 import Button from "../../components/Button";
+import AllProducts from "../../models/allProductsModel";
 import axios from "axios";
+import { connectToDB } from "../../utils/db";
 async function getData() {
-  const response = await axios.get(`${process.env.BASE_URL}/api/products`);
-
-  if (response.status !== 200) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
+  try {
+    connectToDB();
+    const data = await AllProducts.find({});
+    if (!data) {
+      throw new Error("couldn't find the data");
+    }
+    return data;
+  } catch (error) {
+    console.log("errpr");
   }
-
-  return response.data;
 }
 
 const Home = async () => {
-  const dataResult = await getData();
-  const data = dataResult.data;
+  const data = await getData();
   return (
     <section className="text-gray-600  ">
       <div className="container px-5 py-20 mx-auto">
