@@ -25,7 +25,7 @@ const Home = async () => {
           {data &&
             data?.map((product, index) => {
               return (
-                <div className="p-4 xs:w-full sm:w-1/2 lg:w-1/5" key={index}>
+                <div className="p-4 sm:w-1/2 xs:w-1/2 lg:w-1/5" key={index}>
                   <div className="shadow-2xl border h-full p-4 rounded-md flex flex-col items-center sm:justify-start justify-center text-center">
                     <img
                       alt="team"

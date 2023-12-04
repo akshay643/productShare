@@ -17,6 +17,7 @@ const Input = ({
     "px-3",
     "w-full",
     "border",
+    "text-black",
     "focus:outline-none",
     "focus:border-indigo-500",
     "focus:ring",
