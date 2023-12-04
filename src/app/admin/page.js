@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import FileBase64 from "react-file-base64";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { postProduct } from "../serverAction/productAction";
 const validationSchema = Yup.object({
   product_name: Yup.string().required("required"),
   product_description: Yup.string().required("required"),
@@ -35,17 +36,16 @@ const Page = () => {
   });
   //dafa
   const handleFormSubmit = async (values) => {
-    const res = await axios.post(`${process.env.BASE_URL}/api/products`, {
+    const result = await postProduct({
       ...values,
       product_link: files,
       product_url: "none",
     });
-    if (res?.status !== 200) {
-      alert("Something Went Wrong");
-    } else {
-      alert("Saved SuccessFully");
-      router.push("/");
+    if (!result.status === 200) {
+      alert("Something went wrong");
     }
+    alert("Saved Successfully");
+    router.push("/");
   };
 
   return (
