@@ -17,7 +17,7 @@ const About = () => {
           </p>
           <div class="flex gap-2 justify-center">
             <a
-              href="/productsSection"
+              href="/ProductsSection"
               class="inline-flex text-white shadow-2xl bg-green-600 border-0 p-3 focus:outline-none hover:bg-green-500 rounded-3xl text-sm"
             >
               View Products
