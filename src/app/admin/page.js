@@ -51,6 +51,7 @@ const Page = () => {
       ...values,
       product_link: files,
     });
+    console.log("result", result);
     if (!result.status === 200) {
       alert("Something went wrong");
     }
