@@ -20,31 +20,19 @@ async function getData() {
 const Home = async () => {
   const data = await getData();
   return (
-    <section className="w-screen h-screen flex flex-col justify-start gap-16 items-center py-14 rounded-lg shadow-lg">
-      <div>
-        <Button
-          isLink
-          fullwidth
-          buttonText="Amazon Finds"
-          isLarge
-          isPrimary
-          href="/ProductsSection"
-        >
-          Products
-        </Button>
-      </div>
-      <div>
-        <Button
-          isLink
-          fullwidth
-          buttonText="Social Media"
-          isLarge
-          isPrimary
-          href="/ProductsSection"
-        >
-          Products
-        </Button>
-      </div>
+    <section className="w-screen h-screen flex flex-col justify-start gap-10 items-center py-14 shadow-lg">
+      <a
+        className="text-center buttonstyle bg-green-600 p-3 lg:w-1/2  rounded-3xl text-white hover:bg-green-800 hover:shadow-xl transition-all duration-300"
+        href="/ProductsSection"
+      >
+        Products
+      </a>
+      <a
+        className="text-center buttonstyle bg-green-600 p-3 lg:w-1/2 rounded-3xl text-white hover:bg-green-800 hover:shadow-xl transition-all duration-300"
+        href="/ProductsSection"
+      >
+        Social Links
+      </a>
     </section>
   );
 };
