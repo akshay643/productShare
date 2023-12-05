@@ -10,7 +10,7 @@ const page = () => {
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
             Your Feedback Shapes Our Future: Reach Out, Share Your Thoughts, and
-            Let's Build Something Amazing Together!
+            Let&apos;s Build Something Amazing Together!
           </p>
         </div>
         <div className="lg:w-1/2 md:w-2/3 mx-auto">
