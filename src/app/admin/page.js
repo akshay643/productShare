@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { postProduct } from "../serverAction/productAction";
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
+import Loader from "../../../components/Loader";
 
 // const validationSchema = Yup.object({
 //   product_name: Yup.string().required("required"),
@@ -24,6 +25,7 @@ const Page = () => {
   const [isAuthorise, setIsAuthorise] = useState(false);
   const [files, setFiles] = useState([]);
   const [updatedData, setUpdatedData] = useState([]);
+  const [loader, setLoader] = useState(false);
   const getFiles = (files) => {
     setFiles(files[0].base64);
   };
@@ -43,6 +45,7 @@ const Page = () => {
   });
 
   const handleFormSubmit = async (values) => {
+    setLoader(true);
     const result = await postProduct({
       ...values,
       product_link: files,
@@ -51,6 +54,7 @@ const Page = () => {
       alert("Something went wrong");
     }
     setUpdatedData(result.data);
+    setLoader(false);
     alert("Saved Successfully");
     // router.push("/");
   };
@@ -103,8 +107,9 @@ const Page = () => {
           </div>
         </>
       ) : (
-        <>
-          <div className="min-h-screen flex justify-center  bg-center bg-white  px-4 sm:px-6 bg bg-no-repeat bg-cover relative items-start p-4">
+        <div style={{ position: "relative" }}>
+          {loader ? <Loader /> : ""}
+          <div className="min-h-fit-content flex justify-center  bg-center bg-white  px-4 sm:px-6 bg bg-no-repeat bg-cover relative items-start p-4">
             <div className="form w-full h-full p-12 border rounded-2xl shadow-xl">
               <div className="md:flex flex-row md:space-x-4 w-full text-xs">
                 <div className="mb-3 space-y-2 w-full text-xs">
@@ -177,46 +182,40 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <section className="text-gray-600">
-            <div className="container px-5 py-20 mx-auto">
-              <div className="flex flex-wrap -m-2 justify-center">
-                {updatedData &&
-                  updatedData?.map((product, index) => {
-                    return (
-                      <div
-                        className="p-4 sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/5"
-                        key={index}
-                      >
-                        <div className="shadow-2xl border h-full p-4 rounded-md flex flex-col items-center sm:justify-start justify-center text-center">
-                          <img
-                            alt="team"
-                            className="flex-shrink-0 rounded-lg object-cover object-center sm:mb-0 mb-4"
-                            src={product.product_link}
-                          />
-                          <div className="flex-grow">
-                            <h2 className="title-font font-medium text-lg text-gray-900">
-                              {product.product_name}
-                            </h2>
-                            <p className="mb-4">
-                              {product.product_description}
-                            </p>
+          <div className="flex align-center justify-center">
+            {updatedData &&
+              updatedData?.map((product, index) => {
+                return (
+                  <div
+                    className="p-4 sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/5"
+                    key={index}
+                  >
+                    <div className="shadow-2xl border h-full p-4 rounded-md flex flex-col items-center sm:justify-start justify-center text-center">
+                      <img
+                        alt="team"
+                        className="flex-shrink-0 rounded-lg object-cover object-center sm:mb-0 mb-4"
+                        src={product.product_link}
+                      />
+                      <div className="flex-grow">
+                        <h2 className="title-font font-medium text-lg text-gray-900">
+                          {product.product_name}
+                        </h2>
+                        <p className="mb-4">{product.product_description}</p>
 
-                            <a
-                              href={product.product_url}
-                              target="_blank"
-                              className="px-5 py-2 text-white shadow-lg tracking-wider rounded-full hover:shadow-lg bg-green-600 focus:outline-none hover:bg-green-500 text-sm"
-                            >
-                              Buy
-                            </a>
-                          </div>
-                        </div>
+                        <a
+                          href={product.product_url}
+                          target="_blank"
+                          className="px-5 py-2 text-white shadow-lg tracking-wider rounded-full hover:shadow-lg bg-green-600 focus:outline-none hover:bg-green-500 text-sm"
+                        >
+                          Buy
+                        </a>
                       </div>
-                    );
-                  })}
-              </div>
-            </div>
-          </section>
-        </>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
       )}
     </>
   );

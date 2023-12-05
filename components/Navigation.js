@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const Navigation = () => {
   return (
-    <header className="bg-gray-800 body-font">
-      <div className="container mx-auto flex flex-wrap  flex-col md:flex-row items-center">
+    <header className="bg-gray-800 p-2 body-font">
+      <div className="container mx-auto flex  md:flex-row items-center justify-between">
         <a
           href="/"
           className="flex title-font font-medium items-center text-gray-400 mb-4 md:mb-0"

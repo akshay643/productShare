@@ -1,6 +1,7 @@
 import { revalidateTag } from "next/cache";
 import AllProducts from "../../../models/allProductsModel";
 import { connectToDB } from "../../../utils/db";
+import Loader from "../../../components/Loader";
 async function getData() {
   try {
     connectToDB();
@@ -21,7 +22,9 @@ const ProductSection = async () => {
     <section className="text-gray-600">
       <div className="container px-5 py-20 mx-auto">
         <div className="flex flex-wrap -m-2 justify-center">
-          {data &&
+          {!data ? (
+            <Loader />
+          ) : (
             data?.map((product, index) => {
               return (
                 <div
@@ -51,7 +54,8 @@ const ProductSection = async () => {
                   </div>
                 </div>
               );
-            })}
+            })
+          )}
         </div>
       </div>
     </section>
