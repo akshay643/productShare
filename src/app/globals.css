@@ -58,3 +58,7 @@ body {
     transform: scale(1.2, 1);
   }
 }
+
+.logoColor {
+  background-color: rgb(0, 152, 221);
+}

@@ -17,8 +17,19 @@ export async function postProduct(formData) {
     });
 
     await NewProducts.save();
+    const allProducts = await AllProducts.find();
 
-    return { message: "Success", data: NewProducts, status: 200 };
+    return { message: "Success", data: allProducts, status: 200 };
+  } catch (error) {
+    return { message: "failed to fetch" };
+  }
+}
+export async function getProducts() {
+  try {
+    connectToDB();
+    const allProducts = await AllProducts.find({});
+
+    return { message: "Success", data: allProducts, status: 200 };
   } catch (error) {
     return { message: "failed to fetch" };
   }
