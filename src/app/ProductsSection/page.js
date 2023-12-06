@@ -3,6 +3,7 @@ import AllProducts from "../../../models/allProductsModel";
 import { connectToDB } from "../../../utils/db";
 import Loader from "../../../components/Loader";
 import Share from "../../../components/Share";
+import Image from "next/image";
 
 async function getData() {
   try {
@@ -34,8 +35,10 @@ const ProductSection = async () => {
                   key={index}
                 >
                   <div className="shadow-2xl border h-full p-4 rounded-md flex flex-col items-center sm:justify-start justify-center text-center">
-                    <img
-                      alt="team"
+                    <Image
+                      alt="product linkl"
+                      width={200}
+                      height={200}
                       className="flex-shrink-0 rounded-lg object-cover object-center sm:mb-0 mb-4"
                       src={product.product_link}
                     />

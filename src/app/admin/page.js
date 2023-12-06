@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
+import Image from "next/image";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import FileBase64 from "react-file-base64";
@@ -191,7 +192,9 @@ const Page = () => {
                     key={index}
                   >
                     <div className="shadow-2xl border h-full p-4 rounded-md flex flex-col items-center sm:justify-start justify-center text-center">
-                      <img
+                      <Image
+                        width={200}
+                        height={200}
                         alt="team"
                         className="flex-shrink-0 rounded-lg object-cover object-center sm:mb-0 mb-4"
                         src={product.product_link}

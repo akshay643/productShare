@@ -27,7 +27,12 @@ const Share = ({ shareurl }) => {
       <div className="flex justify-between w-full mt-3">
         <WhatsappShareButton url={shareurl} className=" animate-bounce">
           <span className="myShareCountWrapper ">
-            <Image src="/whatsapp.svg" height={20} width={20} />
+            <Image
+              src="/whatsapp.svg"
+              height={20}
+              width={20}
+              alt="whatsapp share"
+            />
           </span>
         </WhatsappShareButton>
         <p
@@ -37,7 +42,7 @@ const Share = ({ shareurl }) => {
             notify("copied");
           }}
         >
-          <Image src="/copy.svg" height={20} width={20} />
+          <Image src="/copy.svg" height={20} width={20} alt="copy" />
         </p>
       </div>
     </>

@@ -21,7 +21,12 @@ const SocialMedia = () => {
         <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
           <div class="p-4 md:w-1/2 flex flex-col text-center items-center">
             <div class="w-20 h-20 inline-flex items-center justify-center rounded-full  text-indigo-500 mb-5 flex-shrink-0">
-              <Image src="/instagram.png" width={100} height={100} />
+              <Image
+                src="/instagram.png"
+                width={100}
+                height={100}
+                alt="Instagram"
+              />
             </div>
             <div class="flex-grow">
               <a
@@ -60,7 +65,12 @@ const SocialMedia = () => {
           </div>
           <div class="p-4 md:w-1/2 flex flex-col text-center items-center">
             <div class="w-20 h-20 inline-flex items-center justify-center rounded-full  text-indigo-500 mb-5 flex-shrink-0">
-              <Image src="/youtube.png" width={100} height={100} />
+              <Image
+                src="/youtube.png"
+                width={100}
+                height={100}
+                alt="Youtube"
+              />
             </div>
             <div class="flex-grow">
               <a
