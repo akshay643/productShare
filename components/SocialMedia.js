@@ -85,7 +85,7 @@ const SocialMedia = () => {
                 yourself in a world where each product tells a story. Our
                 offerings include a fusion of flavors, innovative finds, and a
                 touch of retro charm. Explore the extraordinary and embrace a
-                shopping experience that transcends the ordinary."
+                shopping experience that transcends the ordinary.
               </p>
               <a class="mt-3 text-indigo-500 inline-flex items-center">
                 Visit
