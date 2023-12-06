@@ -31,7 +31,7 @@ const Home = async () => {
         </a>
         <a
           className="text-center buttonstyle bg-green-600 p-3 lg:w-1/2 rounded-3xl text-white hover:bg-green-800 hover:shadow-xl transition-all duration-300"
-          href="/ProductsSection"
+          href="/social"
         >
           Social Links
         </a>
