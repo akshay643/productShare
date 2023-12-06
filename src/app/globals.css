@@ -15,6 +15,13 @@ body {
   background-color: rgb(0, 152, 221);
 }
 
+.buttonstyle {
+  box-shadow: 19px 17px 5px rgba(22, 163, 74, 0.526);
+}
+
+.buttonstyle:hover {
+  box-shadow: 19px 17px 5px rgba(22, 163, 74, 0.526);
+}
 @media only screen and (max-width: 720px) {
   .buttonstyle {
     width: 75%;
