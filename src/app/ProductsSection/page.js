@@ -2,6 +2,8 @@ import { revalidateTag } from "next/cache";
 import AllProducts from "../../../models/allProductsModel";
 import { connectToDB } from "../../../utils/db";
 import Loader from "../../../components/Loader";
+import Share from "../../../components/Share";
+
 async function getData() {
   try {
     connectToDB();
@@ -19,7 +21,7 @@ async function getData() {
 const ProductSection = async () => {
   const data = await getData();
   return (
-    <section className="text-gray-600">
+    <section className="text-gray-600 ">
       <div className="container px-5 py-20 mx-auto">
         <div className="flex flex-wrap -m-2 justify-center">
           {!data ? (
@@ -28,7 +30,7 @@ const ProductSection = async () => {
             data?.map((product, index) => {
               return (
                 <div
-                  className="p-4 sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/5"
+                  className="p-4 sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/5 relative"
                   key={index}
                 >
                   <div className="shadow-2xl border h-full p-4 rounded-md flex flex-col items-center sm:justify-start justify-center text-center">
@@ -37,7 +39,7 @@ const ProductSection = async () => {
                       className="flex-shrink-0 rounded-lg object-cover object-center sm:mb-0 mb-4"
                       src={product.product_link}
                     />
-                    <div className="flex-grow">
+                    <div className="flex-grow flex-center">
                       <h2 className="title-font font-medium text-lg text-gray-900">
                         {product.product_name}
                       </h2>
@@ -51,6 +53,8 @@ const ProductSection = async () => {
                         Buy
                       </a>
                     </div>
+
+                    <Share shareurl={product.product_url} />
                   </div>
                 </div>
               );
