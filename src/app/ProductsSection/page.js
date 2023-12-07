@@ -4,7 +4,7 @@ import { connectToDB } from "../../../utils/db";
 import Loader from "../../../components/Loader";
 import Share from "../../../components/Share";
 import Image from "next/image";
-
+import { MotionDiv } from "../../../components/FramerMotion";
 async function getData() {
   try {
     connectToDB();
@@ -30,7 +30,15 @@ const ProductSection = async () => {
           ) : (
             data?.map((product, index) => {
               return (
-                <div
+                <MotionDiv
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  initial={{
+                    x: index % 2 === 0 ? "-100vw" : "100vw", // alternate between left and right
+                    y: index % 2 === 0 ? "0" : "0", // y-position remains the same
+                  }}
+                  animate={{ x: 0, y: 0 }}
+                  transition={{ type: "spring", stiffness: 120, damping: 12 }}
                   className="p-4 sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/5 relative"
                   key={index}
                 >
@@ -59,7 +67,7 @@ const ProductSection = async () => {
 
                     <Share shareurl={product.product_url} />
                   </div>
-                </div>
+                </MotionDiv>
               );
             })
           )}
