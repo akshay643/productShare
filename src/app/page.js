@@ -24,13 +24,13 @@ const Home = async () => {
     <>
       <section className="w-screen h-screen flex flex-col justify-start gap-10 items-center py-14 shadow-lg">
         <a
-          className="text-center buttonstyle bg-green-600 p-3 lg:w-1/2  rounded-3xl text-white hover:bg-green-800 hover:shadow-xl transition-all duration-300"
+          className="text-center buttonstyle border bg-white p-3 lg:w-1/2  rounded-3xl font-medium text-black hover:bg-black hover:text-white hover:shadow-xl transition-all duration-300"
           href="/ProductsSection"
         >
           Products
         </a>
         <a
-          className="text-center buttonstyle bg-green-600 p-3 lg:w-1/2 rounded-3xl text-white hover:bg-green-800 hover:shadow-xl transition-all duration-300"
+          className="text-center buttonstyle bg-white p-3 lg:w-1/2 rounded-3xl text-dark font-medium border hover:bg-black hover:shadow-xl hover:text-white transition-all duration-300"
           href="/social"
         >
           Social Links
