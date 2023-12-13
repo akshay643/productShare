@@ -37,7 +37,7 @@ const AnimatedBackground = () => {
           position: "absolute",
           width: "100%",
           height: "100%",
-          background: `linear-gradient(90deg, ${gradientColor} 0%, rgba(248,248,249,1) 100%);`,
+          background: `linear-gradient(90deg, ${gradientColor} 0%, rgba(248,248,249,1) 100%)`,
         }}
         variants={variants}
         initial="hidden"
