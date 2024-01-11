@@ -11,8 +11,20 @@ const Footer = () => {
         </a>
         . All Rights Reserved.
       </span>
+      <span
+        style={{
+          color: "#28282B",
+          background: "lightgrey",
+          padding: "5px",
+          borderRadius: "10px",
+        }}
+      >
+        *This site uses affiliate links. We may earn a commission if you make a
+        purchase through these links. This helps support our content at no extra
+        cost to you.
+      </span>
       <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400">
-        <li className="mb-2 md:mb-0 md:me-6">
+        <li className="mx-2 md:me-6">
           <Link href="/about" className="hover:underline">
             About
           </Link>

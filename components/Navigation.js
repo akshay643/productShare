@@ -21,7 +21,7 @@ const Navigation = () => {
         <Button
           isLink
           isLarge
-          buttonText="Profile"
+          buttonText="Admin"
           href="/admin"
           className="logoColor"
         />
